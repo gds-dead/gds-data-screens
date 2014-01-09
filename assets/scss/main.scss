@@ -1,0 +1,105 @@
+@import 'fonts';
+@import 'colours';
+
+$tablet: "only screen and (min-width : 768px) and (max-width : 1024px)";
+$tv: "only screen and (min-width : 1025px) and (max-width : 1300px)";
+
+
+html {
+	height: 100%;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    /*cursor: none;*/
+	/*font-family: "ntatabularnumbers", "nta", Arial, sans-serif;*/
+	font-family: "nta", Arial, sans-serif;
+	font-weight: bold;
+	color: #0B0C0C;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+}
+
+/*
+.slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+.slide-inner-container {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.slide-inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tax-disc {
+
+    display: inline-block;
+    text-align: left;
+    
+	font-size: 3.750em;
+	@media #{$tablet} {
+	    font-size: 2.500em;
+	}
+	@media #{$tv} {
+	    font-size: 2.813em;
+	}
+	
+	h1 {
+	    margin: 0;
+	}
+	.govuk {
+		font-size: 95%;
+	}
+	.govuk .dot {
+		position: relative;
+		margin-left: -0.09em;
+	}
+	
+	.user-count {
+	    margin: 0;
+		font-size: 800%;
+		line-height: 1;
+		color: #006C56;
+	}
+	
+	.users {
+		display: inline-block;
+		text-align: left;
+	}
+	.intro-strap {
+		display: block;
+	}
+	.satisfaction {
+		margin-top: -50px;
+	}
+	#satisfactionPie {
+		display: inline-block;
+		position: relative;
+		top: 10px;
+		margin-right: 16px;
+	}
+}
+*/
