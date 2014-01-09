@@ -8873,5 +8873,5 @@ var cycleSlides = function() {
 	next.classList.add('now');
 };
 
-var sliderTimer = window.setInterval(cycleSlides, 10000);
+//var sliderTimer = window.setInterval(cycleSlides, 10000);
 
