@@ -27,7 +27,34 @@ var addCommas = function(n) {
 	return x1 + x2;
 }
 
-// slide functionality
+// create a percentage from a customer satisfaction number (1-5)
+var scoreToPercentage = function(score) {
+	var maxScore = 5, minScore = 1;
+	var p = ((maxScore - score) / (maxScore - minScore)) * 100;
+	return Math.round( p * 10 ) / 10;
+};
+
+// Raphael funcs /////////////////////////////////////////////////////////////////////
+
+// Pie charts
+var renderPie = function(domElement, x, y, r, data, colours) {
+    var rEl = Raphael(domElement);
+    var chart = rEl.piechart(x, y, r, data, {
+        stroke: "transparent",
+        startFromFixedAngle: 90,
+        colors: colours
+    });
+    var lid = rEl
+        .circle(x, y, r/2)
+        .attr({
+            fill: "#fff",
+            stroke: "transparent"
+        });
+}
+
+
+// slide functionality //////////////////////////////////////////////////////////////
+
 var slides = document.getElementsByClassName('item');
 
 var cycleSlides = function() {
@@ -45,4 +72,13 @@ var cycleSlides = function() {
 };
 
 //var sliderTimer = window.setInterval(cycleSlides, 10000);
+
+
+// Doc ready kickoffs //////////////////////////////////////////////////////////////
+
+$(function() {
+
+    // quick test for tax disc (needs sorting out)
+    renderPie($('.tax-disc .user-satisfaction-pie').get(0), 25, 25, 25, [95, 5], ["#85994b", "transparent"]);
+});
 
