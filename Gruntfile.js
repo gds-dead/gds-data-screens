@@ -20,6 +20,7 @@ module.exports = function(grunt) {
                     'assets/js/vendor/raphael.js',
                     'assets/js/vendor/g.raphael-min.js',
                     'assets/js/vendor/g.pie.js',
+                    'assets/js/items/*.js',
                     'assets/js/main.js'
                 ],
                 dest: 'public/js/app.js',
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
     
         watch: {
             scripts: {
-                files: ['assets/js/*.js'],
+                files: ['assets/js/*.js', 'assets/js/items/*.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
