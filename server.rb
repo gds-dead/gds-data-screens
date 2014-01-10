@@ -27,6 +27,17 @@ get '/govuk-historic-visitors' do
   response.body
 end
 
+# Visitors narrative
+get '/govuk-visitors-narrative' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.gov.uk', 443)
+  http.use_ssl = true
+  #req = Net::HTTP::Get.new("/performance/dashboard/narrative.json")
+  req = Net::HTTP::Get.new("/performance/dashboard/narrative")
+  response = http.request(req)
+  response.body
+end
+
 #===========
 
 # tax disc realtime visitors

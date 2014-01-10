@@ -20,7 +20,7 @@ body {
     height: 100%;
     /*overflow: hidden;*/
     /*cursor: none;*/
-	font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
+	font-family: "ntatabularnumbers", Arial, sans-serif;
 	font-weight: bold;
 	color: $black;
 }
@@ -128,6 +128,9 @@ body {
     color: $light-blue;
 }
 .tax-disc .key-colour {
+    color: $department-for-transport;
+}
+.sorn .key-colour {
     color: $department-for-transport;
 }
 .lpa-applications .key-colour {
