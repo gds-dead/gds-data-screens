@@ -100,10 +100,10 @@ var govukHistoricVisitors = {
 
   updateDisplay: function() {
 
-    var latestFigure = $('#latestFigure');
-    var historicFigure = $('#historicFigure');
-    var latestDates = $('#latestDates');
-    var historicDates = $('#historicDates');
+    var latestFigure = $('.govuk-visitors .latest-figure');
+    var historicFigure = $('.govuk-visitors .historic-figure');
+    var latestDates = $('.govuk-visitors .latest-dates');
+    var historicDates = $('.govuk-visitors .historic-dates');
     
     // update the display (pretty):
     latestFigure.text(addCommas(this.latestData.value['govuk']));

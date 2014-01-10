@@ -17377,10 +17377,10 @@ var govukHistoricVisitors = {
 
   updateDisplay: function() {
 
-    var latestFigure = $('#latestFigure');
-    var historicFigure = $('#historicFigure');
-    var latestDates = $('#latestDates');
-    var historicDates = $('#historicDates');
+    var latestFigure = $('.govuk-visitors .latest-figure');
+    var historicFigure = $('.govuk-visitors .historic-figure');
+    var latestDates = $('.govuk-visitors .latest-dates');
+    var historicDates = $('.govuk-visitors .historic-dates');
     
     // update the display (pretty):
     latestFigure.text(addCommas(this.latestData.value['govuk']));
@@ -17427,11 +17427,11 @@ var taxDisc = {
 
   loadUsers: function() {
     // clear the users array
-    this.usersCount.length = 0;
+    taxDisc.usersCount.length = 0;
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: this.urlUsers,
+      url: taxDisc.urlUsers,
       success: function(d) {
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
@@ -17445,7 +17445,7 @@ var taxDisc = {
 
   updateUsersDisplay: function() {
     var r = getRandomInt(0, taxDisc.usersCount.length);
-    $('#usersCount').text(taxDisc.usersCount[r]);
+    $('.tax-disc .users-count').text(taxDisc.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -17455,7 +17455,7 @@ var taxDisc = {
       url: this.urlSatisfaction,
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
-        $('#userSatisfaction').text(percent);
+        $('.tax-disc .user-satisfaction').text(percent);
         renderPie($('.tax-disc .user-satisfaction-pie').get(0), 25, 25, 25, [percent, 100 - percent], ["#85994b", "transparent"]);
       }
     });
@@ -17467,7 +17467,9 @@ $(function() {
   taxDisc.loadUsers();
   taxDisc.loadSatisfaction();
   // set up a "wobble"
-  //var taxDiscWobble = window.setInterval(taxDisc.updateUsersDisplay, 10e3);
+  var taxDiscWobble = window.setInterval(taxDisc.updateUsersDisplay, 10e3);
+  // poll gov.uk once every 5 minutes
+  var taxDiscUpdate = window.setInterval(taxDisc.loadUsers, 300e3);
 });
 
 // very cheap and cheerful
@@ -17548,4 +17550,4 @@ var cycleSlides = function() {
 	next.classList.add('now');
 };
 
-//var sliderTimer = window.setInterval(cycleSlides, 10000);
+//var sliderTimer = window.setInterval(cycleSlides, 10e3);
