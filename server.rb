@@ -47,3 +47,15 @@ get '/tax-disc-satisfaction' do
   response = http.request(req)
   response.body
 end
+
+#===========
+
+# LPA live data
+get '/lpa' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/performance/lasting-power-of-attorney/api/volumes?")
+  response = http.request(req)
+  response.body
+end
