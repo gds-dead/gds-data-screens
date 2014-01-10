@@ -17,68 +17,8 @@ end
 
 #===========
 
-# Licenses live data
-get '/realtime/licenses' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/licensing/api/application?group_by=licenceUrlSlug&collect=licenceName&start_at=2013-10-07T00%3A00%3A00%2B00%3A00&end_at=2013-10-14T00%3A00%3A00%2B00%3A00&limit=5&sort_by=_count%3Adescending")
-  response = http.request(req)
-  response.body
-end
-
-# LPA live data
-get '/realtime/lpa' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/lasting-power-of-attorney/api/volumes?")
-  response = http.request(req)
-  response.body
-end
-
-# SORN live data
-get '/realtime/sorn' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/sorn/api/realtime?sort_by=_timestamp%3Adescending&limit=5")
-  response = http.request(req)
-  response.body
-end
-
-get '/satisfaction/sorn' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/vehicle-licensing/api/customer-satisfaction")
-  response = http.request(req)
-  response.body
-end
-
-# Tax Disc live data
-get '/realtime/tax-disc' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/tax-disc/api/realtime?sort_by=_timestamp%3Adescending&limit=5")
-  response = http.request(req)
-  response.body
-end
-
-get '/satisfaction/tax-disc' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/vehicle-licensing/api/customer-satisfaction")
-  response = http.request(req)
-  response.body
-end
-
-# Visitors device(?)
-
 # Historic visitors
-get '/visitors-historic/content' do
+get '/govuk-historic-visitors' do
   cache_control :public, :max_age => 20
   http = Net::HTTP.new('www.gov.uk', 443)
   http.use_ssl = true
@@ -87,14 +27,23 @@ get '/visitors-historic/content' do
   response.body
 end
 
-# Visitors narrative
-get '/visitors-narrative/content' do
+#===========
+
+# tax disc realtime visitors
+get '/tax-disc-users' do
   cache_control :public, :max_age => 20
   http = Net::HTTP.new('www.gov.uk', 443)
   http.use_ssl = true
-  #req = Net::HTTP::Get.new("/performance/dashboard/narrative.json")
-  req = Net::HTTP::Get.new("/performance/dashboard/narrative")
+  req = Net::HTTP::Get.new("/performance/tax-disc/api/realtime?sort_by=_timestamp%3Adescending&limit=5")
   response = http.request(req)
   response.body
 end
-
+# tax disc satisfaction
+get '/tax-disc-satisfaction' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/performance/vehicle-licensing/api/customer-satisfaction")
+  response = http.request(req)
+  response.body
+end

@@ -34,6 +34,11 @@ var scoreToPercentage = function(score) {
 	return Math.round( p * 10 ) / 10;
 };
 
+// Returns a random integer between min and max
+var getRandomInt = function(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Raphael funcs /////////////////////////////////////////////////////////////////////
 
 // Pie charts
@@ -72,13 +77,3 @@ var cycleSlides = function() {
 };
 
 //var sliderTimer = window.setInterval(cycleSlides, 10000);
-
-
-// Doc ready kickoffs //////////////////////////////////////////////////////////////
-
-$(function() {
-
-    // quick test for tax disc (needs sorting out)
-    renderPie($('.tax-disc .user-satisfaction-pie').get(0), 25, 25, 25, [95, 5], ["#85994b", "transparent"]);
-});
-

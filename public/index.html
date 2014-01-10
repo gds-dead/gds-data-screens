@@ -21,15 +21,18 @@
         
         <!-- ********************************************************** -->
         <!-- Unique visitors to gov.uk -->
-        <div class="item now">
+        <div class="item">
             <div class="item-container">
                 <div class="item-inner">
 
                     <div class="item-content historic-figures govuk-visitors">
                         <div><span class="title">Unique <span class="govuk">gov<span class="dot">.</span>uk</span> visitors</span></div>
-                        <div>29 December &ndash; 4 January 2014</div>
-                        <div class="big-550 key-colour">0,000,000</div>
-                        <div>13 January &ndash; 19 January 2013: <span class="key-colour">5,553,399</span></div>
+                        <div id="latestDates"></div>
+                        <div class="big-550 key-colour" id="latestFigure"></div>
+                        <div>
+                            <span id="historicDates"></span>:&nbsp;
+                            <span class="key-colour" id="historicFigure"></span>
+                        </div>
                     </div>
 
                 </div>
@@ -39,18 +42,18 @@
         
         <!-- ********************************************************** -->
         <!-- tax disc -->
-        <div class="item">
+        <div class="item now">
             <div class="item-container">
                 <div class="item-inner">
                 
                     <div class="item-content realtime-users-and-satisfaction tax-disc">
                         <div>
                             Users on <span class="govuk">gov<span class="dot">.</span>uk</span> tax disc right now:
-                            <div class="big-800 key-colour">000</div>
+                            <div class="big-800 key-colour" id="usersCount"></div>
                         </div>
                         <div>
                             <div class="user-satisfaction-pie"></div>
-                            95% user satisfaction
+                            <span id="userSatisfaction"></span>% user satisfaction
                         </div>
                     </div>
                     
@@ -132,7 +135,11 @@
         
     </div>
     
-    <script src="/js/app.min.js"></script>
+    <script src="/js/app.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
 
 </body>
 
