@@ -6,6 +6,10 @@
 ##################
 node_modules
 
+# Ruby + Gems #
+###############
+Gemfile.lock
+
 # Compiled source #
 ###################
 *.com
