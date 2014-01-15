@@ -17275,6 +17275,51 @@ b,a+p,i&&i[u]||(Math.round(k)==k?k:+k.toFixed(r))).attr(v)))}l=o.path(l);l.text=
     }
     
 })();
+var carersAllowance = {
+
+  url: '/carers',
+
+  total: 0,
+  digitalTotal: 0,
+  nonDigitalTotal: 0,
+  dateFrom: [],
+
+  loadData: function() {
+    $.ajax({
+      dataType: 'json',
+      cache: false,
+      url: carersAllowance.url,
+      success: function(d) {
+        carersAllowance.parseData(d);
+      }
+    });
+  },
+
+  parseData: function(d) {
+    // get the first (oldest) date:
+    this.dateFrom = d.data[0].values[0]._start_at.split('-');
+    
+    this.digitalTotal = d.data[1]['value:sum'];
+    this.nonDigitalTotal = d.data[0]['value:sum'];
+
+    this.total = this.digitalTotal + this.nonDigitalTotal;
+
+    carersAllowance.updateDisplay();
+  },
+
+  updateDisplay: function() {
+    var $el = $('.carers-claims');
+    $el.find('.total-figure').text(addCommas(this.total));
+    $el.find('.total-digital').text(addCommas(this.digitalTotal));
+    $el.find('.total-non-digital').text(addCommas(this.nonDigitalTotal));
+    $el.find('.latest-date').text(this.dateFrom[2].split('T')[0] + ' ' + monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
+  }
+
+};
+
+$(function() {
+  carersAllowance.loadData();
+});
 var govukHistoricVisitors = {
 
   // see server.rb - performance platform url
@@ -17439,7 +17484,6 @@ var govukVisitorsNarrative = {
     $snippet.find('span').addClass('key-colour');
 
     var str = $snippet.html();
-    console.log(str);
 
     // split on the bloody comma
     var split = str.split(', ');
@@ -17626,6 +17670,57 @@ $(function() {
   var taxDiscUpdate = window.setInterval(taxDisc.loadUsers, 300e3);
 });
 
+var topPolicies = {
+
+  url: '/policies',
+
+  policies: [],
+
+  loadData: function() {
+    $.ajax({
+      dataType: 'json',
+      cache: false,
+      url: topPolicies.url,
+      success: function(d) {
+        topPolicies.parseData(d);
+      }
+    });
+  },
+
+  parseData: function(d) {
+
+    // pull out all objects with format of 'policy' and with value in 'entries'
+    for (var i=0; i<d.details.data.length; i++) {
+      var item = d.details.data[i];
+      if (item.entries !== null && item.format === 'policy') {
+        this.policies.push(d.details.data[i]);
+      }
+    }
+    // sort array by entries descending
+    this.policies.sort(function(a,b) { return parseFloat(b.entries) - parseFloat(a.entries) } );
+    // shorten array to 5 items
+    this.policies = this.policies.slice(0,5);
+
+    topPolicies.updateDisplay();
+  },
+
+  updateDisplay: function() {
+    var htmlStr = '';
+    for (var i=0; i<this.policies.length; i++) {
+      htmlStr += '<div><span class="leaderboard-item">';
+      htmlStr += this.policies[i].title;
+      htmlStr += '</span><span class="leaderboard-number">';
+      htmlStr += addCommas(this.policies[i].entries);
+      htmlStr += '</span></div>';
+    }
+    $('.top-policies .leaderboard-content').html(htmlStr);
+  }
+
+};
+
+$(function() {
+  topPolicies.loadData();
+});
 // very cheap and cheerful
 var monthsMap = {
 	"01" : "January",
@@ -17704,4 +17799,4 @@ var cycleSlides = function() {
 	next.classList.add('now');
 };
 
-var sliderTimer = window.setInterval(cycleSlides, 10e3);
+//var sliderTimer = window.setInterval(cycleSlides, 10e3);

@@ -21,7 +21,6 @@ var govukVisitorsNarrative = {
     $snippet.find('span').addClass('key-colour');
 
     var str = $snippet.html();
-    console.log(str);
 
     // split on the bloody comma
     var split = str.split(', ');

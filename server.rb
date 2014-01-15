@@ -91,3 +91,28 @@ get '/lpa' do
   response = http.request(req)
   response.body
 end
+
+#===========
+
+# Carer's allowance live data (returns ALL claims by channel) in a nice format!
+get '/carers' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/carers-allowance/weekly-claims?collect=value%3Asum&period=month&group_by=key")
+  response = http.request(req)
+  response.body
+end
+
+#===========
+
+# Policy data
+get '/policies' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/performance/dashboard/government/content-engagement-detail.json")
+  response = http.request(req)
+  response.body
+end
+
