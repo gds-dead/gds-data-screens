@@ -5,6 +5,12 @@
 $tablet: "only screen and (min-width : 768px) and (max-width : 1024px)";
 $tv: "only screen and (min-width : 1025px) and (max-width : 1300px)";
 
+%title-underline {
+    display: inline-block;
+    line-height: 0.8;
+    border-bottom: 3px solid;
+}
+
 /* ******************************************************** */
 
 html {
@@ -85,6 +91,9 @@ body {
         }
     }
 }
+.multiple-realtime .key-colour {
+    background-color: $light-blue;
+}
 
 
 /* ******************************************************** */
@@ -100,9 +109,7 @@ body {
 .historic-figures {
     font-size: 3.750em;
     .title {
-        display: inline-block;
-        line-height: 0.8;
-        border-bottom: 3px solid;
+        @extend %title-underline;
     }
 }
 
@@ -121,9 +128,6 @@ body {
 /* Type #5 - leaderboard */
 .leaderboard {
     font-size: 3.25em;
-    .title {
-
-    }
 }
 .leaderboard-content {
     & > div {

@@ -28,6 +28,10 @@ var taxDisc = {
   updateUsersDisplay: function() {
     var r = getRandomInt(0, taxDisc.usersCount.length);
     $('.tax-disc .users-count').text(taxDisc.usersCount[r]);
+
+    /*******************************************************/
+    // Might not be the best place, but do the same thing to .figure-grid layout
+    $('.figure.tax-disc').text(taxDisc.usersCount[r]);
   },
 
   loadSatisfaction: function() {

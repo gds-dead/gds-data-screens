@@ -17588,6 +17588,10 @@ var sorn = {
   updateUsersDisplay: function() {
     var r = getRandomInt(0, sorn.usersCount.length);
     $('.sorn .users-count').text(sorn.usersCount[r]);
+
+    /*******************************************************/
+    // Might not be the best place, but do the same thing to .figure-grid layout
+    $('.figure.sorn').text(sorn.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -17644,6 +17648,10 @@ var taxDisc = {
   updateUsersDisplay: function() {
     var r = getRandomInt(0, taxDisc.usersCount.length);
     $('.tax-disc .users-count').text(taxDisc.usersCount[r]);
+
+    /*******************************************************/
+    // Might not be the best place, but do the same thing to .figure-grid layout
+    $('.figure.tax-disc').text(taxDisc.usersCount[r]);
   },
 
   loadSatisfaction: function() {
