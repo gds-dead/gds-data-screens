@@ -34,16 +34,16 @@ body {
     box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	right: -100%;
+	top: -100%;
 	-webkit-transform: translateZ(0);
-	transition: right 0.5s ease-out;
+	transition: top 0.75s ease-out;
 	background-color: $white;
 	&.now {
-		right: 0%;
+		top: 0%;
 		z-index: 2;
 	}
 	&.prev {
-		right: 100%;
+		top: 100%;
 		z-index: 1;
 	}
 }
