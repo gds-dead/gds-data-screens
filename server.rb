@@ -103,3 +103,15 @@ get '/carers' do
   response = http.request(req)
   response.body
 end
+
+#===========
+
+# Departments & Policy visitors
+get '/depts-policy-visitors' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/performance/dashboard/government/visitors/weekly.json")
+  response = http.request(req)
+  response.body
+end

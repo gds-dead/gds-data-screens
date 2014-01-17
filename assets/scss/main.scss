@@ -78,7 +78,10 @@ body {
     color: $light-blue;
 }
 .carers-claims .key-colour {
-    color: $mellow-red;
+    color: $pink;
+}
+.depts-policy-visitors .key-colour {
+    color: $pink;
 }
 
 
@@ -170,11 +173,11 @@ body {
 .proportion {
     width: 100%;
     height: 100%;
-    padding: 1em 3% 0 3%;
     text-align: left;
     .title {
         position: relative;
         z-index: 1;
+        padding: 1em 3% 0 3%;
     }
 }
 .proportion-container {
