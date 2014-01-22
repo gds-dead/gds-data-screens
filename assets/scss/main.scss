@@ -28,6 +28,7 @@ body {
     /*cursor: none;*/
 	font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
     font-weight: bold;
+    font-size: 80px;
     line-height: 1.18;
 	color: $white;
 }
@@ -95,9 +96,6 @@ body {
 /* Various item "types" */
 
 /* Type #1 - realtime users and user satisfaction */
-.realtime-users-and-satisfaction {
-    font-size: 80px;
-}
 .car {
     margin-right: 30px;
 }
@@ -106,20 +104,13 @@ body {
 }
 
 /* Type #2 - historic figures */
-.historic-figures {
-    font-size: 80px;
-}
 
 /* Type #3 - narrative */
 .narrative {
     padding: 0 5%;
-    font-size: 80px;
 }
 
 /* Type #4 - proportion */
-.proportion {
-    font-size: 3.750em;
-}
 
 
 /* ******************************************************** */
@@ -210,6 +201,6 @@ body {
     img {
         max-width: 100%;
         display: block;
-        margin: 0 auto 1em auto; 
+        margin: 0 auto 0.5em auto; 
     }
 }
