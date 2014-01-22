@@ -42,7 +42,7 @@ var getRandomInt = function(min, max) {
 // Raphael funcs /////////////////////////////////////////////////////////////////////
 
 // Pie charts
-var renderPie = function(domElement, x, y, r, data, colours) {
+var renderPie = function(domElement, x, y, r, data, colours, circleColour) {
     var rEl = Raphael(domElement);
     var chart = rEl.piechart(x, y, r, data, {
         stroke: "transparent",
@@ -52,7 +52,7 @@ var renderPie = function(domElement, x, y, r, data, colours) {
     var lid = rEl
         .circle(x, y, r/2)
         .attr({
-            fill: "#fff",
+            fill: circleColour,
             stroke: "transparent"
         });
 }

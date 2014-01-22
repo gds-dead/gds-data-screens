@@ -31,7 +31,7 @@ var taxDisc = {
 
     /*******************************************************/
     // Might not be the best place, but do the same thing to .figure-grid layout
-    $('.figure.tax-disc').text(taxDisc.usersCount[r]);
+    //$('.figure.tax-disc').text(taxDisc.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -42,7 +42,7 @@ var taxDisc = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
         $('.tax-disc .user-satisfaction').text(percent);
-        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 25, 25, 25, [percent, 100 - percent], ["#85994b", "transparent"]);
+        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006c56");
       }
     });
   }

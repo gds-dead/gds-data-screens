@@ -31,7 +31,7 @@ var sorn = {
 
     /*******************************************************/
     // Might not be the best place, but do the same thing to .figure-grid layout
-    $('.figure.sorn').text(sorn.usersCount[r]);
+    //$('.figure.sorn').text(sorn.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -42,7 +42,7 @@ var sorn = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_sorn);
         $('.sorn .user-satisfaction').text(percent);
-        renderPie($('.sorn .user-satisfaction-pie').get(0), 25, 25, 25, [percent, 100 - percent], ["#85994b", "transparent"]);
+        renderPie($('.sorn .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006c56");
       }
     });
   }

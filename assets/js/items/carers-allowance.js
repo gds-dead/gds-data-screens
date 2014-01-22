@@ -35,7 +35,7 @@ var carersAllowance = {
     $el.find('.total-figure').text(addCommas(this.total));
     $el.find('.total-digital').text(addCommas(this.digitalTotal));
     $el.find('.total-non-digital').text(addCommas(this.nonDigitalTotal));
-    $el.find('.latest-date').text(this.dateFrom[2].split('T')[0] + ' ' + monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
+    $el.find('.latest-date').text(monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
   }
 
 };
