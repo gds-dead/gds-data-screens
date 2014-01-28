@@ -4,12 +4,6 @@
 
 $govuk-blue: #005ea5;
 
-%title-underline {
-    display: inline-block;
-    line-height: 0.8;
-    border-bottom: 3px solid;
-}
-
 /* ******************************************************** */
 
 html {
@@ -202,5 +196,37 @@ body {
         max-width: 100%;
         display: block;
         margin: 0 auto 0.5em auto; 
+    }
+}
+
+
+/* ******************************************************** */
+
+.pp-powered {
+    position: absolute;
+    font-size: 27px;
+}
+
+.govuk-visitors,
+.lpa-applications,
+.carers-claims {
+    .pp-powered {
+        bottom: -7em;
+    }
+}
+.depts-policy-visitors {
+    .pp-powered {
+        bottom: -5.5em;
+    }
+}
+.tax-disc,
+.sorn {
+    .pp-powered {
+        bottom: -2.5em;
+    }
+}
+.govuk-narrative {
+    .pp-powered {
+        bottom: -14.5em;
     }
 }

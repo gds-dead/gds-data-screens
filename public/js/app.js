@@ -17554,7 +17554,7 @@ var sorn = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_sorn);
         $('.sorn .user-satisfaction').text(percent);
-        renderPie($('.sorn .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006c56");
+        renderPie($('.sorn .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
@@ -17614,7 +17614,7 @@ var taxDisc = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
         $('.tax-disc .user-satisfaction').text(percent);
-        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006c56");
+        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
