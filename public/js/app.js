@@ -17312,7 +17312,7 @@ var carersAllowance = {
     $el.find('.total-figure').text(addCommas(this.total));
     $el.find('.total-digital').text(addCommas(this.digitalTotal));
     $el.find('.total-non-digital').text(addCommas(this.nonDigitalTotal));
-    $el.find('.latest-date').text(this.dateFrom[2].split('T')[0] + ' ' + monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
+    $el.find('.latest-date').text(monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
   }
 
 };
@@ -17326,11 +17326,6 @@ var deptsPolicyVisitors = {
   url: '/depts-policy-visitors',
 
   latestData: {},
-  historicData: {},
-
-  day: 0,
-  month: '',
-  year: '',
 
   loadData: function() {
     $.ajax({
@@ -17349,15 +17344,6 @@ var deptsPolicyVisitors = {
 
     // get the LAST (most recent) item:
     this.latestData = d[d.length-1];
-    
-    // get the year + month + day (day as Number)
-    var split = this.latestData.end_at.split('-');
-    this.year = split[0];
-    this.month = split[1];
-    this.day = parseInt(split[2]);
-
-    // get the FIRST (most oldest) item:
-    this.historicData = d[0];
 
     this.updateDisplay();
 
@@ -17366,37 +17352,9 @@ var deptsPolicyVisitors = {
   updateDisplay: function() {
 
     var latestFigure = $('.depts-policy-visitors .latest-figure');
-    var historicFigure = $('.depts-policy-visitors .historic-figure');
-    var latestDates = $('.depts-policy-visitors .latest-dates');
-    var historicDates = $('.depts-policy-visitors .historic-dates');
     
     // update the display (pretty):
     latestFigure.text(addCommas(this.latestData.value));
-    historicFigure.text(addCommas(this.historicData.value));
-    
-    // DD MMM - DD MMM
-    var startSplit = this.latestData.start_at.split('-');
-    var latestStr = '';
-    latestStr += parseInt(startSplit[2]) + ' ';
-    latestStr += monthsMap[startSplit[1]] + ' - ';
-    latestStr += this.day + ' ';
-    latestStr += monthsMap[this.month] + ' ';
-    latestStr += this.year;
-    
-    latestDates.text(latestStr);
-    
-    // now do historic dates
-    var hStartSplit = this.historicData.start_at.split('-');
-    var hEndSplit = this.historicData.end_at.split('-');
-    
-    var hLatestStr = '';
-    hLatestStr += parseInt(hStartSplit[2]) + ' ';
-    hLatestStr += monthsMap[hStartSplit[1]] + ' - ';
-    hLatestStr += parseInt(hEndSplit[2]) + ' ';
-    hLatestStr += monthsMap[hEndSplit[1]] + ' ';
-    hLatestStr += hEndSplit[0];
-    
-    historicDates.text(hLatestStr);
   }
 
 };
@@ -17410,11 +17368,6 @@ var govukHistoricVisitors = {
   url: '/govuk-historic-visitors',
 
   latestData: {},
-  historicData: {},
-
-  day: 0,
-  month: '',
-  year: '',
 
   loadData: function() {
     $.ajax({
@@ -17442,63 +17395,6 @@ var govukHistoricVisitors = {
 
     // get the LAST (most recent) item:
     this.latestData = govuk[govuk.length-1];
-    
-    // get the year + month + day (day as Number)
-    var split = this.latestData.end_at.split('-');
-    this.year = split[0];
-    this.month = split[1];
-    this.day = parseInt(split[2]);
-    
-    // now get comparable data from 1 YEAR AGO (the same month) in a smaller array
-    var historicMonthData = [];
-    for (i=0, _i=govuk.length; i<_i; i++) {
-      var s = govuk[i].end_at.split('-');
-      if (s[0] !== this.year && s[1] === this.month) {
-        historicMonthData.push(govuk[i]);
-      }
-    }
-    
-    // chug through dates (backwards) to get the "nearest-ish" from a year ago
-    // what do we want?
-    // 1. An EQUAL end date for the previous year
-    // 2. Failing that, the NEAREST end date
-    var compare = [];
-    var compareCount = 0;
-    for (i=historicMonthData.length-1, _i=0; i>=_i; i--) {
-
-      var s = historicMonthData[i].end_at.split('-');
-      s = parseInt(s[2]);
-      if (s === this.day) {
-        //console.log(s + ': same day!');
-        historicValue = historicMonthData[i].value['govuk'];
-        compare.length = 0; // flush the compare array, we have a match!
-        compare[compareCount] = [s ,historicMonthData[i]];
-        compareCount++;
-        break;
-      } else if (s > this.day) {
-        //console.log(s + ": currently later than the day");
-        compare[compareCount] = [s ,historicMonthData[i]];
-        compareCount++;
-      } else {
-        //console.log(s + ": now earlier than the day");
-        compare[compareCount] = [s ,historicMonthData[i]];
-        compareCount++;
-        break;
-      }
-    }
-
-    if (compare.length > 1) {
-      // Do a comparison of s - find the smallest remainder
-      var r1 = Math.abs(this.day - compare[0][0]);
-      var r2 = Math.abs(this.day - compare[1][0]);
-      if (r1 < r2) {
-        this.historicData = compare[0][1];
-      } else {
-        this.historicData = compare[1][1];
-      }
-    } else {
-      this.historicData = compare[0][1];
-    }
 
     this.updateDisplay();
 
@@ -17507,37 +17403,9 @@ var govukHistoricVisitors = {
   updateDisplay: function() {
 
     var latestFigure = $('.govuk-visitors .latest-figure');
-    var historicFigure = $('.govuk-visitors .historic-figure');
-    var latestDates = $('.govuk-visitors .latest-dates');
-    var historicDates = $('.govuk-visitors .historic-dates');
     
     // update the display (pretty):
     latestFigure.text(addCommas(this.latestData.value['govuk']));
-    historicFigure.text(addCommas(this.historicData.value['govuk']));
-    
-    // DD MMM - DD MMM
-    var startSplit = this.latestData.start_at.split('-');
-    var latestStr = '';
-    latestStr += parseInt(startSplit[2]) + ' ';
-    latestStr += monthsMap[startSplit[1]] + ' - ';
-    latestStr += this.day + ' ';
-    latestStr += monthsMap[this.month] + ' ';
-    latestStr += this.year;
-    
-    latestDates.text(latestStr);
-    
-    // now do historic dates
-    var hStartSplit = this.historicData.start_at.split('-');
-    var hEndSplit = this.historicData.end_at.split('-');
-    
-    var hLatestStr = '';
-    hLatestStr += parseInt(hStartSplit[2]) + ' ';
-    hLatestStr += monthsMap[hStartSplit[1]] + ' - ';
-    hLatestStr += parseInt(hEndSplit[2]) + ' ';
-    hLatestStr += monthsMap[hEndSplit[1]] + ' ';
-    hLatestStr += hEndSplit[0];
-    
-    historicDates.text(hLatestStr);
   }
 
 };
@@ -17634,7 +17502,7 @@ var lpa = {
     $el.find('.total-figure').text(addCommas(this.total));
     $el.find('.total-digital').text(addCommas(this.digitalTotal));
     $el.find('.total-non-digital').text(addCommas(this.nonDigitalTotal));
-    $el.find('.latest-date').text(this.dateFrom[2].split('T')[0] + ' ' + monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
+    $el.find('.latest-date').text(monthsMap[this.dateFrom[1]] + ' ' + this.dateFrom[0]);
   }
 
 };
@@ -17675,7 +17543,7 @@ var sorn = {
 
     /*******************************************************/
     // Might not be the best place, but do the same thing to .figure-grid layout
-    $('.figure.sorn').text(sorn.usersCount[r]);
+    //$('.figure.sorn').text(sorn.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -17686,7 +17554,7 @@ var sorn = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_sorn);
         $('.sorn .user-satisfaction').text(percent);
-        renderPie($('.sorn .user-satisfaction-pie').get(0), 25, 25, 25, [percent, 100 - percent], ["#85994b", "transparent"]);
+        renderPie($('.sorn .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
@@ -17735,7 +17603,7 @@ var taxDisc = {
 
     /*******************************************************/
     // Might not be the best place, but do the same thing to .figure-grid layout
-    $('.figure.tax-disc').text(taxDisc.usersCount[r]);
+    //$('.figure.tax-disc').text(taxDisc.usersCount[r]);
   },
 
   loadSatisfaction: function() {
@@ -17746,7 +17614,7 @@ var taxDisc = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
         $('.tax-disc .user-satisfaction').text(percent);
-        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 25, 25, 25, [percent, 100 - percent], ["#85994b", "transparent"]);
+        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
@@ -17806,7 +17674,7 @@ var getRandomInt = function(min, max) {
 // Raphael funcs /////////////////////////////////////////////////////////////////////
 
 // Pie charts
-var renderPie = function(domElement, x, y, r, data, colours) {
+var renderPie = function(domElement, x, y, r, data, colours, circleColour) {
     var rEl = Raphael(domElement);
     var chart = rEl.piechart(x, y, r, data, {
         stroke: "transparent",
@@ -17816,7 +17684,7 @@ var renderPie = function(domElement, x, y, r, data, colours) {
     var lid = rEl
         .circle(x, y, r/2)
         .attr({
-            fill: "#fff",
+            fill: circleColour,
             stroke: "transparent"
         });
 }

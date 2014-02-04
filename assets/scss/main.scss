@@ -2,11 +2,7 @@
 @import 'colours';
 @import 'mats_mixins';
 
-%title-underline {
-    display: inline-block;
-    line-height: 0.8;
-    border-bottom: 3px solid;
-}
+$govuk-blue: #005ea5;
 
 /* ******************************************************** */
 
@@ -25,8 +21,10 @@ body {
     /*overflow: hidden;*/
     /*cursor: none;*/
 	font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
-	font-weight: bold;
-	color: $black;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 1.18;
+	color: $white;
 }
 
 .item {
@@ -35,9 +33,9 @@ body {
 	width: 100%;
 	height: 100%;
 	top: -100%;
+    background-color: $govuk-blue;
 	-webkit-transform: translateZ(0);
 	transition: top 0.75s ease-out;
-	background-color: $white;
 	&.now {
 		top: 0%;
 		z-index: 2;
@@ -61,27 +59,29 @@ body {
 
 /* ******************************************************** */
 
-/* key colours */
-.govuk-visitors .key-colour {
-    color: $pink;
+/* key colours / iconography */
+.sorn, .tax-disc {
+    background-color: $green;
 }
-.govuk-narrative .key-colour {
-    color: $light-blue;
+.lpa-applications {
+    background-color: $black;
+    .item-content {
+        padding-left: 330px;
+        background-image: url('../images/icon_lpa.svg');
+        background-repeat: no-repeat;
+        background-size: 240px auto;
+        background-position: 0 50%;
+    }
 }
-.tax-disc .key-colour {
-    color: $department-for-transport;
-}
-.sorn .key-colour {
-    color: $department-for-transport;
-}
-.lpa-applications .key-colour {
-    color: $light-blue;
-}
-.carers-claims .key-colour {
-    color: $pink;
-}
-.depts-policy-visitors .key-colour {
-    color: $pink;
+.carers-claims {
+    background-color: $turquoise;
+    .item-content {
+        padding-left: 330px;
+        background-image: url('../images/icon_carers.svg');
+        background-repeat: no-repeat;
+        background-size: 240px auto;
+        background-position: 0 50%;
+    }
 }
 
 
@@ -90,49 +90,35 @@ body {
 /* Various item "types" */
 
 /* Type #1 - realtime users and user satisfaction */
-.realtime-users-and-satisfaction {
-    font-size: 3.750em;
+.car {
+    margin-right: 30px;
+}
+.push-335 {
+    padding-left: 335px;
 }
 
 /* Type #2 - historic figures */
-.historic-figures {
-    font-size: 3.750em;
-    .title {
-        @extend %title-underline;
-    }
-}
 
 /* Type #3 - narrative */
 .narrative {
-    padding: 0 10%;
-    font-size: 7.813em;
-    line-height: 1.1;
+    padding: 0 5%;
 }
 
 /* Type #4 - proportion */
-.proportion {
-    font-size: 3.750em;
-}
 
 
 /* ******************************************************** */
 
 /* text sizing */
-%big {
-    line-height: 1.1;
+.big-280 {
+    font-size: 280px;
 }
-.big-150 {
-    font-size: 150%;
-    @extend %big;
+.big-340 {
+    font-size: 340px;
 }
-.big-550 {
-    font-size: 550%;
-    @extend %big;
-}
-.big-800 {
-    font-size: 800%;
-    margin-bottom: -0.125em;
-    @extend %big;
+.big-480 {
+    font-size: 480px;
+    line-height: 1;
 }
 
 /* cheeky text spacing */
@@ -145,18 +131,19 @@ body {
 
 /* pie charts */
 .user-satisfaction-pie {
-    position: relative;
-    top: 4px;
     float: left;
-    width: 50px;
-    height: 50px;
-    margin-right: 0.25em;
+    width: 80px;
+    height: 80px;
 }
 
 
 /* ******************************************************** */
 
 /* GOV.UK logo */
+.crown {
+    position:relative;
+    top:2px;
+}
 .govuk {
     font-size: 95%;
     text-transform: uppercase;
@@ -171,6 +158,7 @@ body {
 
 /* proportion layouts (just device at the moment) */
 .proportion {
+    color: $black;
     width: 100%;
     height: 100%;
     text-align: left;
@@ -191,14 +179,12 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    &.tablet {
-        background-color: $light-blue-25;
-    }
-    &.mobile {
-        background-color: $light-blue-50;
+    &.mobile-devices {
+        color: $white;
+        background-color: $link-active-colour;
     }
     &.desktop {
-        background-color: $light-blue;
+        background-color: $grey-2;
     }
 }
 .proportion-unit-content {
@@ -209,6 +195,38 @@ body {
     img {
         max-width: 100%;
         display: block;
-        margin: 0 auto 1em auto; 
+        margin: 0 auto 0.5em auto; 
+    }
+}
+
+
+/* ******************************************************** */
+
+.pp-powered {
+    position: absolute;
+    font-size: 27px;
+}
+
+.govuk-visitors,
+.lpa-applications,
+.carers-claims {
+    .pp-powered {
+        bottom: -7em;
+    }
+}
+.depts-policy-visitors {
+    .pp-powered {
+        bottom: -5.5em;
+    }
+}
+.tax-disc,
+.sorn {
+    .pp-powered {
+        bottom: -2.5em;
+    }
+}
+.govuk-narrative {
+    .pp-powered {
+        bottom: -14.5em;
     }
 }
