@@ -24,7 +24,7 @@ var govukVisitorsNarrative = {
 
     // split on the bloody comma
     var split = str.split(', ');
-    var newStr = split[0] + ',<br>' + split[1];
+    var newStr = '<div>' + split[0] + ', </div><div>' + split[1] + '</div>';
 
     govukVisitorsNarrative.updateDisplay(newStr);
   },
