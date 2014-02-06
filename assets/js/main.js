@@ -76,4 +76,5 @@ var cycleSlides = function() {
 	next.classList.add('now');
 };
 
+
 var sliderTimer = window.setInterval(cycleSlides, 10e3);

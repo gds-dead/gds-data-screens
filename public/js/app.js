@@ -17439,7 +17439,7 @@ var govukVisitorsNarrative = {
 
     // split on the bloody comma
     var split = str.split(', ');
-    var newStr = split[0] + ',<br>' + split[1];
+    var newStr = '<div>' + split[0] + ', </div><div>' + split[1] + '</div>';
 
     govukVisitorsNarrative.updateDisplay(newStr);
   },
@@ -17554,7 +17554,9 @@ var sorn = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_sorn);
         $('.sorn .user-satisfaction').text(percent);
-        renderPie($('.sorn .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
+        var el = $('.tax-disc .user-satisfaction-pie');
+        var measure = el.width() / 2;
+        renderPie($('.sorn .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
@@ -17614,7 +17616,9 @@ var taxDisc = {
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
         $('.tax-disc .user-satisfaction').text(percent);
-        renderPie($('.tax-disc .user-satisfaction-pie').get(0), 40, 40, 30, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
+        var el = $('.tax-disc .user-satisfaction-pie');
+        var measure = el.width() / 2;
+        renderPie($('.tax-disc .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#006435");
       }
     });
   }
@@ -17707,5 +17711,6 @@ var cycleSlides = function() {
 	current.classList.remove('now');
 	next.classList.add('now');
 };
+
 
 var sliderTimer = window.setInterval(cycleSlides, 10e3);

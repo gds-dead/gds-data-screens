@@ -99,7 +99,7 @@ get '/carers' do
   cache_control :public, :max_age => 20
   http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/data/carers-allowance/weekly-claims?collect=value%3Asum&period=month&group_by=key")
+  req = Net::HTTP::Get.new("/data/carers-allowance/weekly-claims?collect=value%3Asum&period=month&group_by=key&duration=12")
   response = http.request(req)
   response.body
 end

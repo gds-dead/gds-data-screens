@@ -2,6 +2,13 @@
 @import 'colours';
 @import 'mats_mixins';
 
+$xlarge: "screen and (min-width: 1900px)";
+$large: "screen and (min-width: 1200px)";
+$tablet: "screen and (min-width: 768px)";
+
+$portrait: "(orientation: portrait)";
+$landscape: "(orientation: landscape)";
+
 $govuk-blue: #005ea5;
 
 /* ******************************************************** */
@@ -22,9 +29,18 @@ body {
     /*cursor: none;*/
 	font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
     font-weight: bold;
-    font-size: 80px;
     line-height: 1.18;
 	color: $white;
+    font-size: 25px;
+    @media #{$tablet} {
+        font-size: 45px;
+    }
+    @media #{$large} {
+        font-size: 56px;
+    }
+    @media #{$xlarge} {
+        font-size: 80px;
+    }
 }
 
 .item {
@@ -48,6 +64,10 @@ body {
 
 .item-container {
     @extend %total-center;
+    padding: 0 8%;
+    @media #{$tablet} and #{$landscape} {
+        padding: 0;
+    }
 }
 
 .item-content {
@@ -56,111 +76,148 @@ body {
     text-align: left;
 }
 
-
 /* ******************************************************** */
 
-/* key colours / iconography */
-.sorn, .tax-disc {
-    background-color: $green;
+// #1 Historic totals
+
+.total {
+    white-space: normal;
+    @media #{$landscape}, #{tablet} {
+        white-space: nowrap;
+    }
 }
+/* cheeky text spacing */
+.shunt {
+    margin-right: 0.75em;
+}
+.online-vs-paper {
+    @media #{$landscape} {
+        display: inline;
+    }
+}
+
 .lpa-applications {
     background-color: $black;
     .item-content {
-        padding-left: 330px;
-        background-image: url('../images/icon_lpa.svg');
-        background-repeat: no-repeat;
-        background-size: 240px auto;
-        background-position: 0 50%;
+        @media #{$tablet} and #{$landscape} {
+            padding-left: 150px;
+            background-image: url('../images/icon_lpa.svg');
+            background-repeat: no-repeat;
+            background-size: 120px auto;
+            background-position: 0 50%;
+        }
+        @media #{$xlarge} {
+            padding-left: 330px;
+            background-size: 240px auto;
+        }
     }
 }
 .carers-claims {
     background-color: $turquoise;
     .item-content {
-        padding-left: 330px;
-        background-image: url('../images/icon_carers.svg');
-        background-repeat: no-repeat;
-        background-size: 240px auto;
-        background-position: 0 50%;
+        @media #{$tablet} and #{$landscape} {
+            padding-left: 150px;
+            background-image: url('../images/icon_carers.svg');
+            background-repeat: no-repeat;
+            background-size: 120px auto;
+            background-position: 0 50%;
+        }
+        @media #{$xlarge} {
+            padding-left: 330px;
+            background-size: 240px auto;
+        }
     }
 }
 
-
 /* ******************************************************** */
 
-/* Various item "types" */
+// #2 SORN / Tax Disc
 
-/* Type #1 - realtime users and user satisfaction */
+.sorn, .tax-disc {
+    background-color: $green;
+    .push {
+        @media #{$tablet} and #{$landscape} {
+            padding-left: 245px;
+        }
+        @media #{$large} {
+            padding-left: 325px;
+        }
+        @media #{$xlarge} {
+            padding-left: 375px;
+        }
+    }
+}
+
 .car {
-    margin-right: 30px;
+    position: absolute;
+    left: -999em;
+    top: -999em;
+    @media #{$tablet} and #{$landscape} {
+        position: static;
+        margin-right: 30px;
+        width: 195px;
+    }
+    @media #{$large} {
+        width: 265px;
+    }
+    @media #{$xlarge} {
+        width: 305px;
+    }
 }
-.push-335 {
-    padding-left: 335px;
+.users-count {
+    display: block;
+    height: 1.1em;
+    @media #{$tablet} and #{$landscape} {
+        display: inline-block;
+        height: 0.9em;
+    }
 }
-
-/* Type #2 - historic figures */
-
-/* Type #3 - narrative */
-.narrative {
-    padding: 0 5%;
-}
-
-/* Type #4 - proportion */
-
-
-/* ******************************************************** */
-
-/* text sizing */
-.big-280 {
-    font-size: 280px;
-}
-.big-340 {
-    font-size: 340px;
-}
-.big-480 {
-    font-size: 480px;
-    line-height: 1;
-}
-
-/* cheeky text spacing */
-.shunt {
-    margin-right: 0.75em;
-}
-
-
-/* ******************************************************** */
-
 /* pie charts */
 .user-satisfaction-pie {
     float: left;
-    width: 80px;
-    height: 80px;
-}
-
-
-/* ******************************************************** */
-
-/* GOV.UK logo */
-.crown {
-    position:relative;
-    top:2px;
-}
-.govuk {
-    font-size: 95%;
-    text-transform: uppercase;
-    &.dot {
-        position: relative;
-        margin-left: -0.09em;
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    @media #{$tablet} {
+        width: 34px;
+        height: 34px;
+    }
+    @media #{$large} {
+        width: 44px;
+        height: 44px;
+    }
+    @media #{$xlarge} {
+        width: 56px;
+        height: 56px;
+        margin-right: 12px;
     }
 }
 
 
 /* ******************************************************** */
 
-/* proportion layouts (just device at the moment) */
+// #3 Narrative
+
+.narrative {
+    padding: 0 5%;
+}
+.narrative-content > div {
+    display: inline;
+    @media #{$large} {
+        display: block;
+    }
+}
+
+
+/* ******************************************************** */
+
+// #4 Proportion
+
 .proportion {
     color: $black;
     width: 100%;
     height: 100%;
+    padding: 0;
     text-align: left;
     .title {
         position: relative;
@@ -193,25 +250,110 @@ body {
     width: 100%;
     text-align: center;
     img {
-        max-width: 100%;
+        max-width: 80%;
         display: block;
-        margin: 0 auto 0.5em auto; 
+        margin: 0 auto 0.25em auto;
+        @media #{$tablet} {
+            max-width: 100%;
+            margin-bottom: 0.5em;
+        }
     }
 }
 
 
 /* ******************************************************** */
 
-.pp-powered {
-    position: absolute;
-    font-size: 27px;
+/* text sizing */
+.big-280 {
+    font-size: 265%;
+    @media #{$tablet} {
+        font-size: 350%;
+    }
+}
+.big-340 {
+    font-size: 210%;
+    @media #{$tablet} {
+        font-size: 290%;
+    }
+    @media #{$large} {
+        font-size: 375%;
+    }
+    /*@media #{$xlarge} {
+        font-size: 425%;
+    }*/
+}
+.big-480 {
+    font-size: 500%;
+    line-height: 1.2;
+    @media #{$tablet} {
+        font-size: 700%;
+        line-height: 1;
+    }
+    /*@media #{$large} {
+        font-size: 600%;
+        line-height: 1;
+    }
+    @media #{$xlarge} {
+        font-size: 600%;
+        line-height: 1;
+    }*/
 }
 
-.govuk-visitors,
+.breaker {
+    display: inline;
+    @media #{$tablet} {
+        display: block;
+    }
+}
+
+
+/* ******************************************************** */
+
+/* GOV.UK logo */
+.crown {
+    top: 2px;
+    width: 30px;
+    @media #{$tablet} {
+        width: 50px;
+    }
+    @media #{$large} {
+        width: 65px;
+    }
+    @media #{$xlarge} {
+        width: 96px;
+    }
+}
+.govuk {
+    font-size: 95%;
+    text-transform: uppercase;
+    &.dot {
+        position: relative;
+        margin-left: -0.09em;
+    }
+}
+
+/* ******************************************************** */
+
+.pp-powered {
+    font-size: 45%;
+    padding-top: 1em;
+    //position: absolute;
+    /*@media #{$tablet} {
+        font-size: 45%;
+    }
+    @media #{$xlarge} {
+        font-size: 45%;
+    }
+    @media #{$xlarge} {
+        font-size: 45%;
+    }*/
+}
+
+/*.govuk-visitors,
 .lpa-applications,
 .carers-claims {
     .pp-powered {
-        bottom: -7em;
+        bottom: -4em;
     }
 }
 .depts-policy-visitors {
@@ -230,3 +372,4 @@ body {
         bottom: -14.5em;
     }
 }
+*/
