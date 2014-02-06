@@ -106,10 +106,10 @@ body {
             background-size: 120px auto;
             background-position: 0 50%;
         }
-        /*@media #{$xlarge} {
+        @media #{$xlarge} {
             padding-left: 330px;
             background-size: 240px auto;
-        }*/
+        }
     }
 }
 .carers-claims {
@@ -122,10 +122,10 @@ body {
             background-size: 120px auto;
             background-position: 0 50%;
         }
-        /*@media #{$xlarge} {
+        @media #{$xlarge} {
             padding-left: 330px;
             background-size: 240px auto;
-        }*/
+        }
     }
 }
 
