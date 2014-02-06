@@ -142,7 +142,7 @@ body {
         @media #{$large} {
             padding-left: 325px;
         }
-        @media #{$large} {
+        @media #{$xlarge} {
             padding-left: 375px;
         }
     }
@@ -203,6 +203,9 @@ body {
 }
 .narrative-content > div {
     display: inline;
+    @media #{$large} {
+        display: block;
+    }
 }
 
 
