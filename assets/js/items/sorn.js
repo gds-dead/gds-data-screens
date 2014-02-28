@@ -28,10 +28,6 @@ var sorn = {
   updateUsersDisplay: function() {
     var r = getRandomInt(0, sorn.usersCount.length);
     $('.sorn .users-count').text(sorn.usersCount[r]);
-
-    /*******************************************************/
-    // Might not be the best place, but do the same thing to .figure-grid layout
-    //$('.figure.sorn').text(sorn.usersCount[r]);
   },
 
   loadSatisfaction: function() {
