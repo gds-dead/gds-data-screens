@@ -15,7 +15,6 @@ var govukDevices = {
   },
 
   updateDisplay: function(d) {
-    console.log(d);
 
     var mobile = 0;
     var desktop = 0;
