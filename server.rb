@@ -29,6 +29,18 @@ end
 
 #===========
 
+# Devices last week
+get '/govuk-devices' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/govuk/devices?collect=visitors%3Asum&group_by=deviceCategory&duration=1&period=week")
+  response = http.request(req)
+  response.body
+end
+
+#===========
+
 # tax disc realtime visitors
 get '/tax-disc-users' do
   cache_control :public, :max_age => 20
