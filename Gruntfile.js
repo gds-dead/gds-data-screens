@@ -28,12 +28,13 @@ module.exports = function(grunt) {
             dist: {
                 // the files to concatenate
                 src: [
+                    'assets/js/toggle.js',
                     'assets/js/vendor/jquery-2.0.3.js',
                     'assets/js/vendor/raphael.js',
                     'assets/js/vendor/g.raphael-min.js',
                     'assets/js/vendor/g.pie.js',
                     'assets/js/items/*.js',
-                    'assets/js/*.js'
+                    'assets/js/main.js'
                 ],
                 // the location of the resulting JS file
                 dest: 'public/js/app.js'
