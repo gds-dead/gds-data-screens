@@ -44,18 +44,18 @@ end
 # tax disc realtime visitors
 get '/tax-disc-users' do
   cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/tax-disc/api/realtime?sort_by=_timestamp%3Adescending&limit=5")
+  req = Net::HTTP::Get.new("/data/tax-disc/realtime?sort_by=_timestamp%3Adescending&limit=5")
   response = http.request(req)
   response.body
 end
 # tax disc satisfaction
 get '/tax-disc-satisfaction' do
   cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/vehicle-licensing/api/customer-satisfaction")
+  req = Net::HTTP::Get.new("/data/vehicle-licensing/customer-satisfaction?")
   response = http.request(req)
   response.body
 end
@@ -65,18 +65,18 @@ end
 # SORN realtime visitors
 get '/sorn-users' do
   cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/sorn/api/realtime?sort_by=_timestamp%3Adescending&limit=5")
+  req = Net::HTTP::Get.new("/data/sorn/realtime?sort_by=_timestamp%3Adescending&limit=5")
   response = http.request(req)
   response.body
 end
 # SORN satisfaction
 get '/sorn-satisfaction' do
   cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/vehicle-licensing/api/customer-satisfaction")
+  req = Net::HTTP::Get.new("/data/vehicle-licensing/customer-satisfaction?")
   response = http.request(req)
   response.body
 end
@@ -86,9 +86,9 @@ end
 # LPA live data
 get '/lpa' do
   cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.gov.uk', 443)
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/performance/lasting-power-of-attorney/api/volumes?")
+  req = Net::HTTP::Get.new("/data/lasting-power-of-attorney/volumes?")
   response = http.request(req)
   response.body
 end
