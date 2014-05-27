@@ -1,0 +1,47 @@
+
+{
+  "data": [
+    {
+      "_count": 1.0, 
+      "_group_count": 1, 
+      "deviceCategory": "desktop", 
+      "values": [
+        {
+          "_count": 1.0, 
+          "_end_at": "2014-05-26T00:00:00+00:00", 
+          "_start_at": "2014-05-19T00:00:00+00:00", 
+          "visitors:sum": 5403702.0
+        }
+      ], 
+      "visitors:sum": 5403702.0
+    }, 
+    {
+      "_count": 1.0, 
+      "_group_count": 1, 
+      "deviceCategory": "mobile", 
+      "values": [
+        {
+          "_count": 1.0, 
+          "_end_at": "2014-05-26T00:00:00+00:00", 
+          "_start_at": "2014-05-19T00:00:00+00:00", 
+          "visitors:sum": 1942065.0
+        }
+      ], 
+      "visitors:sum": 1942065.0
+    }, 
+    {
+      "_count": 1.0, 
+      "_group_count": 1, 
+      "deviceCategory": "tablet", 
+      "values": [
+        {
+          "_count": 1.0, 
+          "_end_at": "2014-05-26T00:00:00+00:00", 
+          "_start_at": "2014-05-19T00:00:00+00:00", 
+          "visitors:sum": 989778.0
+        }
+      ], 
+      "visitors:sum": 989778.0
+    }
+  ]
+}
