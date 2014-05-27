@@ -1,6 +1,7 @@
 var lpa = {
 
   url: '/lpa',
+  offlineUrl: 'data/lpa.json',
 
   total: 0,
   digitalTotal: 0,
@@ -8,10 +9,14 @@ var lpa = {
   dateFrom: [],
 
   loadData: function() {
+    loadUrl = lpa.url;
+    if (offline === true) {
+      loadUrl = lpa.offlineUrl;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: lpa.url,
+      url: loadUrl,
       success: function(d) {
         lpa.parseData(d);
       }

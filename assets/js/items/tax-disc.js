@@ -3,6 +3,8 @@ var taxDisc = {
   // see server.rb - performance platform url
   urlUsers: '/tax-disc-users',
   urlSatisfaction: '/tax-disc-satisfaction',
+  offlineUsers: 'data/tax-disc-realtime.json',
+  offlineSatisfaction: 'data/tax-disc-satisfaction.json',
 
   // array to hold 2 realtime user values
   usersCount: [],
@@ -10,10 +12,14 @@ var taxDisc = {
   loadUsers: function() {
     // clear the users array
     taxDisc.usersCount.length = 0;
+    loadUrl = taxDisc.urlUsers;
+    if (offline === true) {
+      loadUrl = taxDisc.offlineUsers;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: taxDisc.urlUsers,
+      url: loadUrl,
       success: function(d) {
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
@@ -31,10 +37,14 @@ var taxDisc = {
   },
 
   loadSatisfaction: function() {
+    loadUrl = taxDisc.urlSatisfaction;
+    if (offline === true) {
+      loadUrl = taxDisc.offlineSatisfaction;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: this.urlSatisfaction,
+      url: loadUrl,
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_tax_disc);
         $('.tax-disc .user-satisfaction').text(percent);
