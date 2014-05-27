@@ -3,6 +3,8 @@ var sorn = {
   // see server.rb - performance platform url
   urlUsers: '/sorn-users',
   urlSatisfaction: '/sorn-satisfaction',
+  offlineUsers: 'data/sorn-realtime.json',
+  offlineSatisfaction: 'data/sorn-satisfaction.json',
 
   // array to hold 2 realtime user values
   usersCount: [],
@@ -10,10 +12,14 @@ var sorn = {
   loadUsers: function() {
     // clear the users array
     sorn.usersCount.length = 0;
+    loadUrl = sorn.urlUsers;
+    if (offline === true) {
+      loadUrl = sorn.offlineUsers;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: sorn.urlUsers,
+      url: loadUrl,
       success: function(d) {
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
@@ -31,10 +37,14 @@ var sorn = {
   },
 
   loadSatisfaction: function() {
+    loadUrl = sorn.urlSatisfaction;
+    if (offline === true) {
+      loadUrl = sorn.offlineSatisfaction;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: this.urlSatisfaction,
+      url: loadUrl,
       success: function(d) {
         var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_sorn);
         $('.sorn .user-satisfaction').text(percent);

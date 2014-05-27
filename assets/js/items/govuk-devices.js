@@ -2,12 +2,17 @@ var govukDevices = {
 
   // see server.rb - performance platform url
   url: '/govuk-devices',
+  offlineUrl: 'data/govuk-devices.json',
 
   loadData: function() {
+    loadUrl = govukDevices.url;
+    if (offline === true) {
+      loadUrl = govukDevices.offlineUrl;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: govukDevices.url,
+      url: loadUrl,
       success: function(d) {
         govukDevices.updateDisplay(d);
       }

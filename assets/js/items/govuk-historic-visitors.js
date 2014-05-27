@@ -2,14 +2,19 @@ var govukHistoricVisitors = {
 
   // see server.rb - performance platform url
   url: '/govuk-historic-visitors',
+  offlineUrl: 'data/govuk-historic-visitors.json',
 
   latestData: {},
 
   loadData: function() {
+    loadUrl = govukHistoricVisitors.url;
+    if (offline === true) {
+      loadUrl = govukHistoricVisitors.offlineUrl;
+    }
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: govukHistoricVisitors.url,
+      url: loadUrl,
       success: function(d) {
         govukHistoricVisitors.parseData(d);
       }
