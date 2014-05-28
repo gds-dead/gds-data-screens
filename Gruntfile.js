@@ -158,7 +158,7 @@ module.exports = function(grunt) {
     grunt.registerTask('offline', 'Creates a single html file with everything inlined.', function() {
         
         grunt.log.writeln('Beginning offline build.');
-        grunt.task.run('test');
+        grunt.task.run('build');
 
         grunt.log.writeln('Inlining...');
         grunt.task.run('smoosher');
