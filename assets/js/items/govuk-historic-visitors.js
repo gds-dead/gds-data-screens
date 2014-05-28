@@ -2,14 +2,14 @@ var govukHistoricVisitors = {
 
   // see server.rb - performance platform url
   url: '/govuk-historic-visitors',
-  offlineUrl: 'data/govuk-historic-visitors.json',
-
+  
   latestData: {},
 
   loadData: function() {
     loadUrl = govukHistoricVisitors.url;
-    if (offline === true) {
-      loadUrl = govukHistoricVisitors.offlineUrl;
+    if (typeof offline !== 'undefined') {
+      govukHistoricVisitors.parseData(govuk_historic_visitors_json);
+      return;
     }
     $.ajax({
       dataType: 'json',
