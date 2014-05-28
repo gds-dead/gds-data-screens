@@ -1,7 +1,6 @@
 var carersAllowance = {
 
   url: '/carers',
-  offlineUrl: 'data/carers.json',
 
   total: 0,
   digitalTotal: 0,
@@ -10,8 +9,9 @@ var carersAllowance = {
 
   loadData: function() {
     loadUrl = carersAllowance.url;
-    if (offline === true) {
-      loadUrl = carersAllowance.offlineUrl;
+    if (typeof offline !== 'undefined') {
+      carersAllowance.parseData(carers_json);
+      return;
     }
     $.ajax({
       dataType: 'json',

@@ -6,6 +6,10 @@
 ##################
 node_modules
 
+# Offline JSON data #
+#####################
+public/data/
+
 # Compiled source #
 ###################
 *.com
