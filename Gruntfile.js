@@ -177,16 +177,12 @@ module.exports = function(grunt) {
 
         newSrc = newSrc.split(landmark);
 
-        grunt.log.writeln(newSrc.length);
-
         var finalSrc = '';
 
         for (var i=0; i<newSrc.length-1; i++) {
           finalSrc += newSrc[i] + landmark + '\n' + small + '\n';
         }
         finalSrc += newSrc[newSrc.length-1];
-
-        //finalSrc = newSrc[0] + landmark + '\n' + small + '\n' + newSrc[1];
         
 
         grunt.file.write('public/offline-index.html', finalSrc);

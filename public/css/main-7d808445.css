@@ -15,4 +15,4 @@
 .big-480{font-size:500%;line-height:1.2}@media screen and (min-width: 768px){.big-480{font-size:700%;line-height:1}}
 .breaker{display:inline}@media screen and (min-width: 768px){.breaker{display:block}}
 .crown{top:2px;width:30px}@media screen and (min-width: 768px){.crown{width:50px}}@media screen and (min-width: 1200px){.crown{width:65px}}@media screen and (min-width: 1900px){.crown{width:96px}}
-.govuk{font-size:95%;text-transform:uppercase}.govuk.dot{position:relative;margin-left:-0.09em}.pp-powered{font-size:45%;padding-top:1em}.offline-demo{display:block;margin-top:0.5em;font-size:75%;font-weight:normal;color:#bfc1c3}
+.govuk{font-size:95%;text-transform:uppercase}.govuk.dot{position:relative;margin-left:-0.09em}.pp-powered{font-size:45%;padding-top:1em}.offline-demo{display:block;margin-top:0.5em;font-size:75%;font-weight:normal}
