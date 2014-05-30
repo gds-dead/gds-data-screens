@@ -151,7 +151,45 @@ module.exports = function(grunt) {
 
         var newSrc = splitSrc[0] + '\n' + allTheThings + '\n' + '<script type="text/javascript">' + splitSrc[1];
 
-        grunt.file.write('public/offline-index.html', newSrc);
+        // add in some small print
+        var dateCollected = new Date();
+
+        var months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+
+        var small = '<small class="offline-demo">This offline demo uses data collected on ';
+        small += dateCollected.getDate() + ' ' + months[dateCollected.getMonth()] + ' ' + dateCollected.getFullYear();
+        small += '</small>';
+
+        var landmark = 'Powered by www.gov.uk/performance';
+
+        newSrc = newSrc.split(landmark);
+
+        grunt.log.writeln(newSrc.length);
+
+        var finalSrc = '';
+
+        for (var i=0; i<newSrc.length-1; i++) {
+          finalSrc += newSrc[i] + landmark + '\n' + small + '\n';
+        }
+        finalSrc += newSrc[newSrc.length-1];
+
+        //finalSrc = newSrc[0] + landmark + '\n' + small + '\n' + newSrc[1];
+        
+
+        grunt.file.write('public/offline-index.html', finalSrc);
 
     });
 

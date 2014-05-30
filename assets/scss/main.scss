@@ -339,39 +339,12 @@ body {
 .pp-powered {
     font-size: 45%;
     padding-top: 1em;
-    //position: absolute;
-    /*@media #{$tablet} {
-        font-size: 45%;
-    }
-    @media #{$xlarge} {
-        font-size: 45%;
-    }
-    @media #{$xlarge} {
-        font-size: 45%;
-    }*/
 }
 
-/*.govuk-visitors,
-.lpa-applications,
-.carers-claims {
-    .pp-powered {
-        bottom: -4em;
-    }
+.offline-demo {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 75%;
+  font-weight: normal;
+  color: $grey-2;
 }
-.depts-policy-visitors {
-    .pp-powered {
-        bottom: -5.5em;
-    }
-}
-.tax-disc,
-.sorn {
-    .pp-powered {
-        bottom: -2.5em;
-    }
-}
-.govuk-narrative {
-    .pp-powered {
-        bottom: -14.5em;
-    }
-}
-*/
