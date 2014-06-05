@@ -22,7 +22,7 @@ get '/govuk-historic-visitors' do
   cache_control :public, :max_age => 20
   http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/data/govuk/visitors?collect=visitors%3Asum&period=week&duration=1&filter_by=dataType%3Agovuk_visitors")
+  req = Net::HTTP::Get.new("/data/govuk/visitors?collect=visitors%3Asum&period=week&duration=1")
   response = http.request(req)
   response.body
 end

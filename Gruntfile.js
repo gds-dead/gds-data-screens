@@ -93,7 +93,7 @@ module.exports = function(grunt) {
         },
 
         curl: {
-            'public/data/govuk-historic-visitors.json': 'https://www.performance.service.gov.uk/data/govuk/visitors?collect=visitors%3Asum&period=week&duration=1&filter_by=dataType%3Agovuk_visitors',
+            'public/data/govuk-historic-visitors.json': 'https://www.performance.service.gov.uk/data/govuk/visitors?collect=visitors%3Asum&period=week&duration=1',
             'public/data/govuk-devices.json': 'https://www.performance.service.gov.uk/data/govuk/devices?collect=visitors%3Asum&group_by=deviceCategory&duration=1&period=week',
             'public/data/tax-disc-users.json': 'https://www.performance.service.gov.uk/data/tax-disc/realtime?sort_by=_timestamp%3Adescending&limit=5',
             'public/data/sorn-users.json': 'https://www.performance.service.gov.uk/data/sorn/realtime?sort_by=_timestamp%3Adescending&limit=5',
