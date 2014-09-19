@@ -131,6 +131,10 @@ module.exports = function(grunt) {
             'public/data/satisfaction.json': 'https://www.performance.service.gov.uk/data/vehicle-licensing/customer-satisfaction?limit=1&sort_by=_id%3Adescending',
             'public/data/lpa.json': 'https://www.performance.service.gov.uk/data/lasting-power-of-attorney/volumes?',
             'public/data/carers.json': 'https://www.performance.service.gov.uk/data/carers-allowance/weekly-claims?collect=value%3Asum&period=month&group_by=key&duration=12',
+            'public/data/prison-visits.json': 'https://www.performance.service.gov.uk/data/prison-visits/digital-volumes?period=month&group_by=is_digital&collect=count%3Asum&duration=12',
+            'public/data/civil-claims.json': 'https://www.performance.service.gov.uk/data/accelerated-possession-eviction/transactions-by-channel?period=month&group_by=channel&collect=count%3Asum&duration=12',
+            'public/data/register-to-vote.json': 'https://www.performance.service.gov.uk/data/register-to-vote/realtime?sort_by=_timestamp%3Adescending&limit=5',
+            'public/data/register-to-vote-satisfaction.json': 'https://www.performance.service.gov.uk/data/register-to-vote/customer-satisfaction?period=day&duration=1&collect=rating_1%3Asum&collect=rating_2%3Asum&collect=rating_3%3Asum&collect=rating_4%3Asum&collect=rating_5%3Asum&collect=total%3Asum',
         },
 
         appendData: {

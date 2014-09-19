@@ -105,3 +105,48 @@ get '/carers' do
   response.body
 end
 
+#===========
+
+# Prison visits over the last 12 months
+get '/prison-visits' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/prison-visits/digital-volumes?period=month&group_by=is_digital&collect=count%3Asum&duration=12")
+  response = http.request(req)
+  response.body
+end
+
+#===========
+
+# Civil claims over the last 12 months
+get '/civil-claims' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/accelerated-possession-eviction/transactions-by-channel?period=month&group_by=channel&collect=count%3Asum&duration=12")
+  response = http.request(req)
+  response.body
+end
+
+#===========
+
+# Register to vote realtime visitors
+get '/register-to-vote-users' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/register-to-vote/realtime?sort_by=_timestamp%3Adescending&limit=5")
+  response = http.request(req)
+  response.body
+end
+# Register to vote satisfaction
+get '/register-to-vote-satisfaction' do
+  cache_control :public, :max_age => 20
+  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
+  http.use_ssl = true
+  req = Net::HTTP::Get.new("/data/register-to-vote/customer-satisfaction?period=day&duration=1&collect=rating_1%3Asum&collect=rating_2%3Asum&collect=rating_3%3Asum&collect=rating_4%3Asum&collect=rating_5%3Asum&collect=total%3Asum")
+  response = http.request(req)
+  response.body
+end
+
