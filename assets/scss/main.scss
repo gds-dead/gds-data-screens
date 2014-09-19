@@ -97,7 +97,7 @@ body {
 }
 
 .lpa-applications {
-    background-color: $black;
+    background-color: $fuschia;
     .item-content {
         @media #{$tablet} and #{$landscape} {
             padding-left: 150px;
@@ -131,11 +131,44 @@ body {
     }
 }
 
+.prison-visits {
+    background-color: $black;
+    .item-content {
+        @media #{$tablet} and #{$landscape} {
+            padding-left: 150px;
+            background-image: url('../images/icon_prison_visits.svg');
+            background-repeat: no-repeat;
+            background-size: 120px auto;
+            background-position: 0 50%;
+        }
+        @media #{$xlarge} {
+            padding-left: 330px;
+            background-size: 240px auto;
+        }
+    }
+}
+.civil-claims {
+    background-color: $black;
+    .item-content {
+        @media #{$tablet} and #{$landscape} {
+            padding-left: 150px;
+            background-image: url('../images/icon_civil_claims.svg');
+            background-repeat: no-repeat;
+            background-size: 120px auto;
+            background-position: 0 50%;
+        }
+        @media #{$xlarge} {
+            padding-left: 330px;
+            background-size: 240px auto;
+        }
+    }
+}
+
 /* ******************************************************** */
 
 // #2 SORN / Tax Disc
 
-.sorn, .tax-disc {
+.sorn, .tax-disc, .register-to-vote {
     background-color: $green;
     .push {
         @media #{$tablet} and #{$landscape} {
@@ -148,6 +181,10 @@ body {
             padding-left: 375px;
         }
     }
+}
+
+.register-to-vote {
+    background-color: $fuschia;
 }
 
 .car {
