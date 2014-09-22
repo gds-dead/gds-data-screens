@@ -105,8 +105,18 @@ var offlineRegisterToVote = {
 };
 
 var renderVoteSatisfaction = function(d) {
-  //var percent = scoreToPercentage(d.data[d.data.length-1].satisfaction_register_to_vote);
-  var percent = 91.7;
+
+  var min = 1;
+  var max = 5;
+  var score = 0;
+  for (var i = min; i <= max; i++) {
+    score += (d.data[0]['rating_' + i + ':sum'] * i);
+  }
+  var mean = score / d.data[0]['total:sum'];
+
+  var percent = (mean - min) / (max - min) * 100;
+  percent = Math.round( percent * 10 ) / 10
+  
   $('.register-to-vote .user-satisfaction').text(percent);
   var el = $('.register-to-vote .user-satisfaction-pie');
   var measure = el.width() / 2;
