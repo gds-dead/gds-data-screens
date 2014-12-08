@@ -1,4 +1,4 @@
-var prisonVists = {
+var prisonVisits = {
 
   url: '/prison-visits',
 
@@ -8,9 +8,9 @@ var prisonVists = {
   dateFrom: [],
 
   loadData: function() {
-    loadUrl = prisonVists.url;
+    loadUrl = prisonVisits.url;
     if (typeof offline !== 'undefined') {
-      prisonVists.parseData(prison_vists_json);
+      prisonVisits.parseData(prison_visits_json);
       return;
     }
     $.ajax({
@@ -18,7 +18,7 @@ var prisonVists = {
       cache: false,
       url: loadUrl,
       success: function(d) {
-        prisonVists.parseData(d);
+        prisonVisits.parseData(d);
       }
     });
   },
@@ -39,7 +39,7 @@ var prisonVists = {
 
     this.total = this.digitalTotal + this.nonDigitalTotal;
 
-    prisonVists.updateDisplay();
+    prisonVisits.updateDisplay();
   },
 
   updateDisplay: function() {
@@ -53,5 +53,5 @@ var prisonVists = {
 };
 
 $(function() {
-  prisonVists.loadData();
+  prisonVisits.loadData();
 });
