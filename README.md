@@ -15,7 +15,7 @@ Make sure you have Ruby (RVM or similar is good), Node, NPM, Grunt installed.
 
 The server / proxy is a Ruby app. Frontend asset compilation (and the offline build) are done with Grunt.
 
-So ``` ruby ./server.rb ``` and ``` grunt ``` will get you running locally on :4000 with sass compilation etc.
+So ``` ruby ./server.rb ``` and ``` grunt ``` will get you running locally on :4567 with sass compilation etc.
 
 ### The offline version
 
