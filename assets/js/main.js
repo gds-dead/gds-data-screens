@@ -78,3 +78,19 @@ var cycleSlides = function() {
 
 
 var sliderTimer = window.setInterval(cycleSlides, 10e3);
+
+
+// refresh functionality //////////////////////////////////////////////////////////////
+
+// Add a hard refresh at 8am every morning
+var now = new Date();
+var millisTill800 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 0, 0, 0) - now;
+if (millisTill800 < 0) {
+     millisTill800 += 86400000; // it's after 8am, try 8am tomorrow.
+}
+
+var hardRefresh = function() {
+  document.location.reload(true);
+}
+
+setTimeout(hardRefresh, millisTill800);
