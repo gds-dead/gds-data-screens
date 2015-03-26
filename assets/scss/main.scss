@@ -11,6 +11,16 @@ $landscape: "(orientation: landscape)";
 
 $govuk-blue: #005ea5;
 
+// Colour reference
+// Hex values are blends of standard colours
+$colour-lpa-applications: $pink;
+$colour-carers-claims: #e3656d;
+$colour-prison-visits: #f1925a;
+$colour-civil-claims: $yellow;
+$colour-sorn: #b8ae71;
+$colour-tax-disc: #729d9a;
+$colour-register-to-vote: $light-blue;
+
 /* ******************************************************** */
 
 html {
@@ -49,7 +59,7 @@ body {
 	width: 100%;
 	height: 100%;
 	top: -100%;
-    background-color: $govuk-blue;
+    background-color: $black;
 	-webkit-transform: translateZ(0);
 	transition: top 0.75s ease-out;
 	&.now {
@@ -97,7 +107,7 @@ body {
 }
 
 .lpa-applications {
-    background-color: $fuschia;
+    background-color: $colour-lpa-applications;
     .item-content {
         @media #{$tablet} and #{$landscape} {
             padding-left: 150px;
@@ -114,7 +124,7 @@ body {
     }
 }
 .carers-claims {
-    background-color: $turquoise;
+    background-color: $colour-carers-claims;
     .item-content {
         @media #{$tablet} and #{$landscape} {
             padding-left: 150px;
@@ -132,7 +142,7 @@ body {
 }
 
 .prison-visits {
-    background-color: $black;
+    background-color: $colour-prison-visits;
     .item-content {
         @media #{$tablet} and #{$landscape} {
             padding-left: 150px;
@@ -149,7 +159,7 @@ body {
     }
 }
 .civil-claims {
-    background-color: $black;
+    background-color: $colour-civil-claims;
     .item-content {
         @media #{$tablet} and #{$landscape} {
             padding-left: 150px;
@@ -171,7 +181,6 @@ body {
 // #2 SORN / Tax Disc
 
 .sorn, .tax-disc, .register-to-vote {
-    background-color: $green;
     .push {
         @media #{$tablet} and #{$landscape} {
             padding-left: 245px;
@@ -185,8 +194,16 @@ body {
     }
 }
 
+.sorn {
+    background-color: $colour-sorn;
+}
+
+.tax-disc {
+    background-color: $colour-tax-disc;
+}
+
 .register-to-vote {
-    background-color: $fuschia;
+    background-color: $colour-register-to-vote;
 }
 
 .car {
