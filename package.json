@@ -11,6 +11,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-curl": "^1.5.1",
     "grunt-hashres": "~0.4.0",
-    "grunt-html-smoosher": "git://github.com/Demotive/grunt-html-smoosher.git"
+    "grunt-html-smoosher-gds-dead": "git://github.com/gemmaleigh/grunt-html-smoosher#e86e5145e81e765c4c2425b212092c068e18b0e1"
   }
 }
