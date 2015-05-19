@@ -125,7 +125,7 @@ module.exports = function(grunt) {
 
         curl: {
             'public/data/govuk-historic-visitors.json': 'https://www.performance.service.gov.uk/data/govuk/visitors?collect=visitors%3Asum&period=month&duration=1',
-            'public/data/govuk-devices.json': 'https://www.performance.service.gov.uk/data/govuk/devices?collect=visitors%3Asum&group_by=deviceCategory&duration=1&period=week',
+            //'public/data/govuk-devices.json': 'https://www.performance.service.gov.uk/data/govuk/devices?collect=visitors%3Asum&group_by=deviceCategory&duration=1&period=week',
             'public/data/tax-disc-users.json': '<%= globalConfig.tax_disc %>',
             'public/data/sorn-users.json': '<%= globalConfig.sorn %>',
             'public/data/satisfaction.json': 'https://www.performance.service.gov.uk/data/vehicle-licensing/customer-satisfaction?limit=1&sort_by=_id%3Adescending',
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-hashres');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-html-smoosher');
+    grunt.loadNpmTasks('grunt-html-smoosher-gds-dead');
     grunt.loadNpmTasks('grunt-curl');
 
 
