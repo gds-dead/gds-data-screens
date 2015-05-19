@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                 files: {
                     'public/css/main.css': 'assets/scss/main.scss'
                 }
-            } 
+            }
         },
 
         // JS
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-        
+
         clean: ["public/css/*", "public/js/*"],
 
         hashres: {
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
             dest: 'public/index.html',
           }
         },
-    
+
         watch: {
             scripts: {
                 files: ['assets/js/*.js', 'assets/js/items/*.js'],
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
         },
 
         curl: {
-            'public/data/govuk-historic-visitors.json': 'https://www.performance.service.gov.uk/data/govuk/visitors?collect=visitors%3Asum&period=week&duration=1',
+            'public/data/govuk-historic-visitors.json': 'https://www.performance.service.gov.uk/data/govuk/visitors?collect=visitors%3Asum&period=month&duration=1',
             'public/data/govuk-devices.json': 'https://www.performance.service.gov.uk/data/govuk/devices?collect=visitors%3Asum&group_by=deviceCategory&duration=1&period=week',
             'public/data/tax-disc-users.json': '<%= globalConfig.tax_disc %>',
             'public/data/sorn-users.json': '<%= globalConfig.sorn %>',
@@ -140,9 +140,9 @@ module.exports = function(grunt) {
         appendData: {
             files: ['public/data/*.json']
         },
-    
+
     });
-    
+
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -152,9 +152,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-smoosher');
     grunt.loadNpmTasks('grunt-curl');
 
-    
+
     grunt.registerTask('default', ['watch']);
-    
+
     grunt.registerTask('test', ['clean', 'sass:dev', 'concat', 'hashres']);
     grunt.registerTask('build', ['clean', 'sass:dist', 'concat', 'uglify', 'hashres']);
 
@@ -218,14 +218,14 @@ module.exports = function(grunt) {
           finalSrc += newSrc[i] + landmark + '\n' + small + '\n';
         }
         finalSrc += newSrc[newSrc.length-1];
-        
+
 
         grunt.file.write('public/offline-index.html', finalSrc);
 
     });
 
     grunt.registerTask('offline', 'Creates a single html file with everything inlined.', function() {
-        
+
         grunt.log.writeln('Beginning offline build.');
         grunt.task.run('build');
 
