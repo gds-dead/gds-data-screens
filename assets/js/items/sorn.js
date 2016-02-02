@@ -109,7 +109,7 @@ var renderSornSatisfaction = function(d) {
   $('.sorn .user-satisfaction').text(percent);
   var el = $('.sorn .user-satisfaction-pie');
   var measure = el.width() / 2;
-  renderPie($('.sorn .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#B8AE71");
+  renderPie($('.sorn .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#FF9900");
 };
 
 $(function() {

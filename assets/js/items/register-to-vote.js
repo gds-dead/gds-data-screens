@@ -120,7 +120,7 @@ var renderVoteSatisfaction = function(d) {
   $('.register-to-vote .user-satisfaction').text(percent);
   var el = $('.register-to-vote .user-satisfaction-pie');
   var measure = el.width() / 2;
-  renderPie($('.register-to-vote .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#2B8CC4");
+  renderPie($('.register-to-vote .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#FF9900");
 }
 
 $(function() {

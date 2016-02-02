@@ -109,7 +109,7 @@ var renderSatisfaction = function(d) {
   $('.tax-disc .user-satisfaction').text(percent);
   var el = $('.tax-disc .user-satisfaction-pie');
   var measure = el.width() / 2;
-  renderPie($('.tax-disc .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#739D9A");
+  renderPie($('.tax-disc .user-satisfaction-pie').get(0), measure, measure, measure, [percent, 100 - percent], ["#fff", "transparent"], "#FF9900");
 }
 
 $(function() {
