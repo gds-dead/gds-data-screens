@@ -112,7 +112,7 @@ get '/prison-visits' do
   cache_control :public, :max_age => 20
   http = Net::HTTP.new('www.performance.service.gov.uk', 443)
   http.use_ssl = true
-  req = Net::HTTP::Get.new("/data/prison-visits/digital-volumes?period=month&group_by=is_digital&collect=count%3Asum&duration=12")
+  req = Net::HTTP::Get.new("/data/prison-visits/transactions-by-channel?period=month&group_by=channel&collect=count%3Asum&duration=12")
   response = http.request(req)
   response.body
 end
